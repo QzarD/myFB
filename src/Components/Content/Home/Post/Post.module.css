@@ -1,0 +1,13 @@
+.home{
+    background-color: gold;
+}
+
+img{
+    max-height: 50px;
+    border-radius: 50px;
+}
+.post{
+    margin: 15px;
+    border: 1px solid black;
+    max-width: 500px;
+}

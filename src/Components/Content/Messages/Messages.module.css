@@ -1,0 +1,11 @@
+.Messages{
+    background-color: green;
+}
+
+.title{
+    font-size: 25px;
+}
+.MessagesContent{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}

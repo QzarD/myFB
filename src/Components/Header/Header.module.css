@@ -1,0 +1,15 @@
+.inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.c-hamburger {
+    display: block;
+    overflow: hidden;
+    width: 34px;
+    height: 34px;
+    font-size: 0;
+    box-shadow: none;
+    cursor: pointer;
+}

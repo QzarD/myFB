@@ -1,0 +1,10 @@
+.home{
+    background-color: deepskyblue;
+}
+.profile{
+    border: 1px solid black;
+    max-width: 400px;
+}
+.selectedPage{
+    font-weight: bold;
+}

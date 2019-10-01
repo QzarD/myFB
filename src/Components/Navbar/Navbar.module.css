@@ -1,0 +1,20 @@
+.navbar_section{
+    border-bottom: 1px solid #000000;
+    padding-bottom: 15px;
+}
+.navbar_row{
+    padding-left: 50px;
+    margin-top: 15px;
+}
+.navbar_row a{
+    text-decoration: none;;
+}
+.navbar_inner{
+
+}
+.navbar_row  a{
+    color: black;
+}
+.navbar_row  a.active{
+     color: green;
+ }

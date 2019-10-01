@@ -16,22 +16,6 @@
 box-shadow: 0 0 20px #000000;
 }
 
-.inner {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0;
-}
-
-.c-hamburger {
-    display: block;
-    overflow: hidden;
-    width: 34px;
-    height: 34px;
-    font-size: 0;
-    box-shadow: none;
-    cursor: pointer;
-}
-
 .navbar{
     display: block;
     position: absolute;
@@ -39,20 +23,13 @@ box-shadow: 0 0 20px #000000;
     border-right: 1px solid #000000;
     background-color: #d6d6d6;
 }
-.navbar-section{
-    border-bottom: 1px solid #000000;
-    padding-bottom: 15px;
-}
-.navbar-row{
-    padding-left: 50px;
-    margin-top: 15px;
-}
-.navbar-row a{
-    text-decoration: none;
-    color: #000;
-}
+
 .content{
     z-index: -1;
     background-color: #153467;
-    height: 500px;
+    min-height: 500px;
+}
+
+.footer{
+    background-color: greenyellow;
 }
