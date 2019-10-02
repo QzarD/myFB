@@ -1,6 +1,7 @@
 import React from "react";
 import styles from './FindProfiles.module.css';
 import userPhoto from '../../../img/userPhoto.jpg'
+import {NavLink} from "react-router-dom";
 
 const FindProfiles=(props)=>{
     let pagesCount=Math.ceil(props.totalProfilesCount/props.pageSize);
@@ -18,7 +19,11 @@ const FindProfiles=(props)=>{
             </div>
             {
                 props.profiles.map(p => <div key={p.id} className={styles.profile}>
-                    <div><img src={p.photos.small != null ? p.photos.small : userPhoto} alt=""/></div>
+                    <div>
+                        <NavLink to={'/profile/'+p.id}>
+                            <img src={p.photos.small != null ? p.photos.small : userPhoto} alt=""/>
+                        </NavLink>
+                    </div>
                     <div>{p.name}</div>
                     <div>
                         {p.followed
@@ -31,8 +36,6 @@ const FindProfiles=(props)=>{
                         }
                     </div>
                     <div>{p.status}</div>
-                    <div>{"p.location.city"}</div>
-                    <div>{"p.location.country"}</div>
                 </div>)
             }
         </div>

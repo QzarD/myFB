@@ -1,8 +1,9 @@
 import React from "react";
-import s from './Home.module.css';
+import s from './Profile.module.css';
 import Post from "./Post/Post";
+import ProfileInfo from "./ProfileInfo";
 
-const Home=(props)=> {
+const Profile=(props)=> {
 
     let postsElements=props.posts.map(p=><Post text={p.post} key={p.id} id={p.id}/>);
 
@@ -12,12 +13,13 @@ const Home=(props)=> {
     }
     let onPostChange=()=>{
         let text=newPostElement.current.value;
-        props.onPostChange(text)
+        props.updateNewPostText(text)
     }
 
     return (
             <div className={s.home}>
                 <div>This Home page! This Home page!This Home page!This Home page!</div>
+                <ProfileInfo profile={props.profile}/>
                 <h3>Posts:</h3>
                 <div>
                     {postsElements}
@@ -32,4 +34,4 @@ const Home=(props)=> {
             </div>
     )
 }
-export default Home;
+export default Profile;

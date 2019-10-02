@@ -7,9 +7,9 @@ const Navbar=()=> {
         <div className={s.navbar_inner}>
             <div className={s.navbar_section}>
                 <div className={s.navbar_row}>
-                    <NavLink to="/home" activeClassName={s.active}>Home</NavLink>
+                    <NavLink to="/profile" activeClassName={s.active}>Home</NavLink>
                 </div>
-                <div className={s.navbar_row}><a href="/home">Listing</a></div>
+                <div className={s.navbar_row}><a href="/profile">Listing</a></div>
                 <div className={s.navbar_row}>
                     <NavLink to="/findprofiles" activeClassName={s.active}>Find Profiles</NavLink>
                 </div>
@@ -18,15 +18,15 @@ const Navbar=()=> {
                 </div>
             </div>
             <div className={s.navbar_section}>
-                <div className={s.navbar_row}><a href="/home">Saved</a></div>
-                <div className={s.navbar_row}><a href="/home">Most Viewed</a></div>
-                <div className={s.navbar_row}><a href="/home">Liked</a></div>
-                <div className={s.navbar_row}><a href="/home">Payment</a></div>
+                <div className={s.navbar_row}><a href="/profile">Saved</a></div>
+                <div className={s.navbar_row}><a href="/profile">Most Viewed</a></div>
+                <div className={s.navbar_row}><a href="/profile">Liked</a></div>
+                <div className={s.navbar_row}><a href="/profile">Payment</a></div>
             </div>
             <div className={s.navbar_section}>
-                <div className={s.navbar_row}><a href="/home">Help</a></div>
-                <div className={s.navbar_row}><a href="/home">Setting</a></div>
-                <div className={s.navbar_row}><a href="/home">Send Feedback</a></div>
+                <div className={s.navbar_row}><a href="/profile">Help</a></div>
+                <div className={s.navbar_row}><a href="/profile">Setting</a></div>
+                <div className={s.navbar_row}><a href="/profile">Send Feedback</a></div>
             </div>
         </div>
     )
