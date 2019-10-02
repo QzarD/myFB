@@ -1,11 +1,11 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    followAC,
-    setCurrentPageAC,
-    setProfilesAC,
-    setTotalProfilesCountAC, toggleIsFetchingAC,
-    unfollowAC
+    follow,
+    setCurrentPage,
+    setProfiles,
+    setTotalProfilesCount, toggleIsFetching,
+    unfollow
 } from "../../../Redux/Profiles-reducer";
 import * as axios from "axios";
 import FindProfiles from "./FindProfiles";
@@ -58,6 +58,7 @@ let mapStateToProps=(state)=>{
         isFetching:state.profilesPage.isFetching
     }
 };
+/*
 let mapDispatchToProps=(dispatch)=>{
     return{
         follow:(profileId)=>{
@@ -80,5 +81,7 @@ let mapDispatchToProps=(dispatch)=>{
         },
     }
 };
+*/
 
-export default connect(mapStateToProps,mapDispatchToProps)(FindProfilesContainer);
+export default connect(mapStateToProps,
+    {follow,unfollow,setProfiles,setCurrentPage,setTotalProfilesCount,toggleIsFetching})(FindProfilesContainer);

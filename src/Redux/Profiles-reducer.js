@@ -52,10 +52,10 @@ const profileReducer=(state=initialState, action)=> {
     }
 };
 
-export const followAC=(profileId)=>({type: FOLLOW, profileId});
-export const unfollowAC=(profileId)=>({type: UNFOLLOW, profileId});
-export const setProfilesAC=(profiles)=>({type: SET_PROFILES, profiles});
-export const setCurrentPageAC=(currentPage)=>({type: SET_CURRENT_PAGE, currentPage});
-export const setTotalProfilesCountAC=(totalProfilesCount)=>({type: SET_TOTAL_PROFILES_COUNT, count:totalProfilesCount});
-export const toggleIsFetchingAC=(isFetching)=>({type: TOGGLE_IS_FETCHING, isFetching});
+export const follow=(profileId)=>({type: FOLLOW, profileId});
+export const unfollow=(profileId)=>({type: UNFOLLOW, profileId});
+export const setProfiles=(profiles)=>({type: SET_PROFILES, profiles});
+export const setCurrentPage=(currentPage)=>({type: SET_CURRENT_PAGE, currentPage});
+export const setTotalProfilesCount=(totalProfilesCount)=>({type: SET_TOTAL_PROFILES_COUNT, count:totalProfilesCount});
+export const toggleIsFetching=(isFetching)=>({type: TOGGLE_IS_FETCHING, isFetching});
 export default profileReducer;
