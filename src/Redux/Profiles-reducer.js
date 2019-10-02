@@ -3,12 +3,14 @@ const UNFOLLOW='UNFOLLOW';
 const SET_PROFILES='SET_PROFILES';
 const SET_CURRENT_PAGE='SET_CURRENT_PAGE';
 const SET_TOTAL_PROFILES_COUNT='SET_TOTAL_PROFILES_COUNT';
+const TOGGLE_IS_FETCHING='TOGGLE_IS_FETCHING';
 
 let initialState={
     profiles:[ ],
     pageSize: 5,
     totalProfilesCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching:false
 };
 
 const profileReducer=(state=initialState, action)=> {
@@ -42,6 +44,9 @@ const profileReducer=(state=initialState, action)=> {
         case SET_TOTAL_PROFILES_COUNT:{
             return {...state, totalUsersCount: action.count}
         }
+        case TOGGLE_IS_FETCHING:{
+            return {...state,isFetching:action.isFetching}
+        }
         default:
             return state;
     }
@@ -52,4 +57,5 @@ export const unfollowAC=(profileId)=>({type: UNFOLLOW, profileId});
 export const setProfilesAC=(profiles)=>({type: SET_PROFILES, profiles});
 export const setCurrentPageAC=(currentPage)=>({type: SET_CURRENT_PAGE, currentPage});
 export const setTotalProfilesCountAC=(totalProfilesCount)=>({type: SET_TOTAL_PROFILES_COUNT, count:totalProfilesCount});
+export const toggleIsFetchingAC=(isFetching)=>({type: TOGGLE_IS_FETCHING, isFetching});
 export default profileReducer;

@@ -8,3 +8,8 @@
 .selectedPage{
     font-weight: bold;
 }
+
+span{
+    cursor: pointer;
+    margin: 5px;
+}
