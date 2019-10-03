@@ -18,13 +18,7 @@ class ProfileContainer extends React.Component{
     }
 
     render() {
-        return <Profile
-            posts={this.props.posts}
-            newPostText={this.props.newPostText}
-            addPost={this.props.addPost}
-            updateNewPostText={this.props.updateNewPostText}
-            profile={this.props.profile}
-        />
+        return <Profile {...this.props}/>
     }
 }
 

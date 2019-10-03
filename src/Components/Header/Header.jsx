@@ -1,7 +1,9 @@
 import React from "react";
 import s from './Header.module.css';
+import logo from '../../img/logo192.png';
+import {NavLink} from "react-router-dom";
 
-const Header=()=> {
+const Header=(props)=> {
     return (
         <div className={`${s.inner} max-width`}>
             <div className={s.menu}>
@@ -10,7 +12,7 @@ const Header=()=> {
                 </button>
             </div>
             <div className={s.logo}>
-                <img src="../../img/logo192.png" alt="logo192"/>
+                <img src={logo} alt="logo192"/>
             </div>
             <div className="nameSite">
                 <span>YouListing</span>
@@ -26,7 +28,9 @@ const Header=()=> {
             </div>
             <div className="icoMessage"></div>
             <div className="icoBell"></div>
-            <div className="signIn"></div>
+            <div className="signIn">
+                {props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>}
+            </div>
         </div>
     )
 }
