@@ -4,7 +4,6 @@ import Post from "./Post/Post";
 import ProfileInfo from "./ProfileInfo";
 
 const Profile=(props)=> {
-
     let postsElements=props.posts.map(p=><Post text={p.post} key={p.id} id={p.id}/>);
 
     let newPostElement=React.createRef();
@@ -15,7 +14,6 @@ const Profile=(props)=> {
         let text=newPostElement.current.value;
         props.updateNewPostText(text)
     }
-
     return (
             <div className={s.home}>
                 <div>This Home page! This Home page!This Home page!This Home page!</div>

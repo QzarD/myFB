@@ -8,7 +8,7 @@ import FindProfilesContainer from "./FindProfiles/FindProfilesContainer";
 const Content=(props)=> {
     return (
             <div className={`${s.inner} max-width`}>
-                <Route path='/profile' render={()=>
+                <Route path='/profile/:userId?' render={()=>
                     <ProfileContainer/>}
                 />
                 <Route path='/FindProfiles' render={()=>

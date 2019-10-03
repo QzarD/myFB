@@ -58,30 +58,6 @@ let mapStateToProps=(state)=>{
         isFetching:state.profilesPage.isFetching
     }
 };
-/*
-let mapDispatchToProps=(dispatch)=>{
-    return{
-        follow:(profileId)=>{
-            dispatch(followAC(profileId));
-        },
-        unfollow:(profileId)=>{
-            dispatch(unfollowAC(profileId));
-        },
-        setProfiles:(profiles)=>{
-            dispatch(setProfilesAC(profiles));
-        },
-        setCurrentPage:(pageNumber)=>{
-            dispatch(setCurrentPageAC(pageNumber));
-        },
-        setTotalProfilesCount:(totalCount)=>{
-            dispatch(setTotalProfilesCountAC(totalCount));
-        },
-        toggleIsFetching:(isFetching)=>{
-            dispatch(toggleIsFetchingAC(isFetching));
-        },
-    }
-};
-*/
 
 export default connect(mapStateToProps,
     {follow,unfollow,setProfiles,setCurrentPage,setTotalProfilesCount,toggleIsFetching})(FindProfilesContainer);
