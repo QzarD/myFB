@@ -2,6 +2,7 @@ import React from "react";
 import styles from './FindProfiles.module.css';
 import userPhoto from '../../../img/userPhoto.jpg'
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 const FindProfiles=(props)=>{
     let pagesCount=Math.ceil(props.totalProfilesCount/props.pageSize);
@@ -28,10 +29,26 @@ const FindProfiles=(props)=>{
                     <div>
                         {p.followed
                             ? <button onClick={() => {
-                                props.unfollow(p.id)
+
+                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${p.id}`, {withCredentials:true,
+                                headers: {"API-KEY":"fc2a5c35-9a4a-4ac9-ae44-639fdb0cf397"}})
+                                    .then(response=>{
+                                        if (response.data.resultCode==0){
+                                            props.unfollow(p.id)
+                                        }
+                                    })
+
                             }}>Unfollow</button>
                             : <button onClick={() => {
-                                props.follow(p.id)
+
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${p.id}`, {}, {withCredentials:true,
+                                    headers: {"API-KEY":"fc2a5c35-9a4a-4ac9-ae44-639fdb0cf397"}})
+                                    .then(response=>{
+                                        if (response.data.resultCode==0){
+                                            props.follow(p.id)
+                                        }
+                                    })
+
                             }}>Follow</button>
                         }
                     </div>
