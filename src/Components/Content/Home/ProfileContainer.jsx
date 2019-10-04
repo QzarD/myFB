@@ -1,20 +1,12 @@
 import React from "react";
-import {addPost, setUserProfile, updateNewPostText} from "../../../Redux/post-reducer";
+import {addPost, getUserId, updateNewPostText} from "../../../Redux/post-reducer";
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import {withRouter} from "react-router-dom";
-import {profileAPI} from "../../Api/api";
 
 class ProfileContainer extends React.Component{
     componentDidMount() {
-        let userId=this.props.match.params.userId;
-        if (!userId){
-            userId=2;
-        }
-        profileAPI.getUserId(userId)
-            .then(data => {
-                this.props.setUserProfile(data);
-            });
+        this.props.getUserId(this.props.match.params.userId);
     }
 
     render() {
@@ -32,4 +24,4 @@ let mapStateToProps=(state)=>{
 
 let WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, {addPost,updateNewPostText,setUserProfile}) (WithUrlDataContainerComponent);
+export default connect(mapStateToProps, {addPost,updateNewPostText,getUserId}) (WithUrlDataContainerComponent);

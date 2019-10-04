@@ -2,7 +2,6 @@ import React from "react";
 import styles from './FindProfiles.module.css';
 import userPhoto from '../../../img/userPhoto.jpg'
 import {NavLink} from "react-router-dom";
-import {followAPI, unfollowAPI} from "../../Api/api";
 
 const FindProfiles=(props)=>{
     let pagesCount=Math.ceil(props.totalProfilesCount/props.pageSize);
@@ -28,26 +27,12 @@ const FindProfiles=(props)=>{
                     <div>{p.name}</div>
                     <div>
                         {p.followed
-                            ? <button onClick={() => {
-
-                                followAPI.getId(p.id)
-                                    .then(data=>{
-                                        if (data.resultCode==0){
-                                            props.unfollow(p.id)
-                                        }
-                                    })
-
-                            }}>Unfollow</button>
-                            : <button onClick={() => {
-
-                                unfollowAPI.getId(p.id)
-                                    .then(data=>{
-                                        if (data.resultCode==0){
-                                            props.follow(p.id)
-                                        }
-                                    })
-
-                            }}>Follow</button>
+                            ? <button disabled={props.followingInProgress.some(id=>id===p.id)}
+                                      onClick={() => {props.unfollow(p.id)}}>Unfollow
+                            </button>
+                            : <button disabled={props.followingInProgress.some(id=>id===p.id)}
+                                      onClick={() => {props.follow(p.id)}}>Follow
+                            </button>
                         }
                     </div>
                     <div>{p.status}</div>

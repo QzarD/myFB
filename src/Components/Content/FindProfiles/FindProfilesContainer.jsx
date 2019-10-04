@@ -1,36 +1,22 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow,
+    follow, getUsers,
     setCurrentPage,
     setProfiles,
-    setTotalProfilesCount, toggleIsFetching,
     unfollow
 } from "../../../Redux/Profiles-reducer";
 import FindProfiles from "./FindProfiles";
 import Preloader from "../../Common/Preloader/Preloader";
-import {usersAPI} from "../../Api/api";
 
 
 class FindProfilesContainer extends React.Component {
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-        usersAPI.getUsers(this.props.CurrentPage, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setProfiles(data.items);
-                this.props.setTotalProfilesCount(data.totalCount);
-            });
+        this.props.getUsers(this.props.CurrentPage, this.props.pageSize);
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber);
-        this.props.toggleIsFetching(true);
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setProfiles(data.items);
-            });
+        this.props.getUsers(pageNumber, this.props.pageSize);
     }
 
     render() {
@@ -44,6 +30,7 @@ class FindProfilesContainer extends React.Component {
                 unfollow={this.props.unfollow}
                 follow={this.props.follow}
                 onPageChanged={this.onPageChanged}
+                followingInProgress={this.props.followingInProgress}
             />
         </>
     }
@@ -55,9 +42,10 @@ let mapStateToProps=(state)=>{
         pageSize:state.profilesPage.pageSize,
         totalProfilesCount:state.profilesPage.totalUsersCount,
         currentPage:state.profilesPage.currentPage,
-        isFetching:state.profilesPage.isFetching
+        isFetching:state.profilesPage.isFetching,
+        followingInProgress:state.profilesPage.followingInProgress
     }
 };
 
 export default connect(mapStateToProps,
-    {follow,unfollow,setProfiles,setCurrentPage,setTotalProfilesCount,toggleIsFetching})(FindProfilesContainer);
+    {follow,unfollow,setProfiles,setCurrentPage,getUsers})(FindProfilesContainer);
