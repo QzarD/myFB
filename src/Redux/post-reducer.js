@@ -40,9 +40,6 @@ export const setUserProfile=(profile)=>({type:SET_USER_PROFILE, profile});
 export const updateNewPostText=(text)=>({type:UPDATE_NEW_POST_TEXT, newText:text});
 export const getUserId=(userId)=>{
     return (dispatch)=>{
-        if (!userId){
-            userId=2;
-        }
         profileAPI.getUserId(userId)
             .then(data => {
                 dispatch(setUserProfile(data));
