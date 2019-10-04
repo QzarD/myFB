@@ -2,7 +2,7 @@ import React from "react";
 import styles from './FindProfiles.module.css';
 import userPhoto from '../../../img/userPhoto.jpg'
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
+import {followAPI, unfollowAPI} from "../../Api/api";
 
 const FindProfiles=(props)=>{
     let pagesCount=Math.ceil(props.totalProfilesCount/props.pageSize);
@@ -30,10 +30,9 @@ const FindProfiles=(props)=>{
                         {p.followed
                             ? <button onClick={() => {
 
-                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${p.id}`, {withCredentials:true,
-                                headers: {"API-KEY":"fc2a5c35-9a4a-4ac9-ae44-639fdb0cf397"}})
-                                    .then(response=>{
-                                        if (response.data.resultCode==0){
+                                followAPI.getId(p.id)
+                                    .then(data=>{
+                                        if (data.resultCode==0){
                                             props.unfollow(p.id)
                                         }
                                     })
@@ -41,10 +40,9 @@ const FindProfiles=(props)=>{
                             }}>Unfollow</button>
                             : <button onClick={() => {
 
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${p.id}`, {}, {withCredentials:true,
-                                    headers: {"API-KEY":"fc2a5c35-9a4a-4ac9-ae44-639fdb0cf397"}})
-                                    .then(response=>{
-                                        if (response.data.resultCode==0){
+                                unfollowAPI.getId(p.id)
+                                    .then(data=>{
+                                        if (data.resultCode==0){
                                             props.follow(p.id)
                                         }
                                     })

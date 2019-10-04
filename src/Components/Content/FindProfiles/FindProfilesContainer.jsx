@@ -7,29 +7,29 @@ import {
     setTotalProfilesCount, toggleIsFetching,
     unfollow
 } from "../../../Redux/Profiles-reducer";
-import * as axios from "axios";
 import FindProfiles from "./FindProfiles";
 import Preloader from "../../Common/Preloader/Preloader";
+import {usersAPI} from "../../Api/api";
 
 
 class FindProfilesContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.CurrentPage}&count=${this.props.pageSize}`, {withCredentials:true})
-            .then(response => {
+        usersAPI.getUsers(this.props.CurrentPage, this.props.pageSize)
+            .then(data => {
                 this.props.toggleIsFetching(false);
-                this.props.setProfiles(response.data.items);
-                this.props.setTotalProfilesCount(response.data.totalCount);
+                this.props.setProfiles(data.items);
+                this.props.setTotalProfilesCount(data.totalCount);
             });
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {withCredentials:true})
-            .then(response => {
+        usersAPI.getUsers(pageNumber, this.props.pageSize)
+            .then(data => {
                 this.props.toggleIsFetching(false);
-                this.props.setProfiles(response.data.items);
+                this.props.setProfiles(data.items);
             });
     }
 
