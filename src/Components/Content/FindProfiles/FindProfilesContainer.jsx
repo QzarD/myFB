@@ -8,7 +8,7 @@ import {
 } from "../../../Redux/Profiles-reducer";
 import FindProfiles from "./FindProfiles";
 import Preloader from "../../Common/Preloader/Preloader";
-import {Redirect} from "react-router-dom";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 class FindProfilesContainer extends React.Component {
@@ -21,7 +21,6 @@ class FindProfilesContainer extends React.Component {
     }
 
     render() {
-        if(!this.props.isAuth) return <Redirect to='/login'/>
         return <>
             {this.props.isFetching ? <Preloader/> : null}
             <FindProfiles
@@ -38,6 +37,8 @@ class FindProfilesContainer extends React.Component {
     }
 }
 
+let AuthRedirectComponent = withAuthRedirect(FindProfilesContainer);
+
 let mapStateToProps=(state)=>{
     return{
         profiles:state.profilesPage.profiles,
@@ -46,9 +47,8 @@ let mapStateToProps=(state)=>{
         currentPage:state.profilesPage.currentPage,
         isFetching:state.profilesPage.isFetching,
         followingInProgress:state.profilesPage.followingInProgress,
-        isAuth:state.auth.isAuth
     }
 };
 
 export default connect(mapStateToProps,
-    {follow,unfollow,setProfiles,setCurrentPage,getUsers})(FindProfilesContainer);
+    {follow,unfollow,setProfiles,setCurrentPage,getUsers})(AuthRedirectComponent);
