@@ -9,6 +9,7 @@ import {
 import FindProfiles from "./FindProfiles";
 import Preloader from "../../Common/Preloader/Preloader";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 class FindProfilesContainer extends React.Component {
@@ -37,8 +38,6 @@ class FindProfilesContainer extends React.Component {
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(FindProfilesContainer);
-
 let mapStateToProps=(state)=>{
     return{
         profiles:state.profilesPage.profiles,
@@ -50,5 +49,9 @@ let mapStateToProps=(state)=>{
     }
 };
 
-export default connect(mapStateToProps,
-    {follow,unfollow,setProfiles,setCurrentPage,getUsers})(AuthRedirectComponent);
+export default compose(
+    connect(mapStateToProps,
+        {follow,unfollow,setProfiles,setCurrentPage,getUsers}),
+    withAuthRedirect
+)(FindProfilesContainer);
+
