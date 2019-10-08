@@ -34,6 +34,18 @@ export const profileAPI={
             .then (response=>{
                 return response.data
             })
+    },
+    getStatus(userId){
+        return instanse.get(`profile/status/${userId}`)
+            .then (response=>{
+                return response.data
+            })
+    },
+    updateStatus(status){
+        return instanse.put(`profile/status/`,{status})
+            .then (response=>{
+                return response.data
+            })
     }
 };
 export const authAPI={

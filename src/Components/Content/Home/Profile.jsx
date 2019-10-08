@@ -17,7 +17,10 @@ const Profile=(props)=> {
     return (
             <div className={s.home}>
                 <div>This Home page! This Home page!This Home page!This Home page!</div>
-                <ProfileInfo profile={props.profile}/>
+                <ProfileInfo
+                    profile={props.profile}
+                    status={props.status}
+                    updateStatus={props.updateStatus}/>
                 <h3>Posts:</h3>
                 <div>
                     {postsElements}
