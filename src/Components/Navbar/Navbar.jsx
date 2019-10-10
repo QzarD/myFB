@@ -9,7 +9,7 @@ const Navbar=()=> {
                 <div className={s.navbar_row}>
                     <NavLink to="/profile" activeClassName={s.active}>Home</NavLink>
                 </div>
-                <div className={s.navbar_row}><a>Listing</a></div>
+                <div className={s.navbar_row}><div>Listing</div></div>
                 <div className={s.navbar_row}>
                     <NavLink to="/findprofiles" activeClassName={s.active}>Find Profiles</NavLink>
                 </div>
@@ -18,15 +18,15 @@ const Navbar=()=> {
                 </div>
             </div>
             <div className={s.navbar_section}>
-                <div className={s.navbar_row}><a>Saved</a></div>
-                <div className={s.navbar_row}><a>Most Viewed</a></div>
-                <div className={s.navbar_row}><a>Liked</a></div>
-                <div className={s.navbar_row}><a>Payment</a></div>
+                <div className={s.navbar_row}><div>Saved</div></div>
+                <div className={s.navbar_row}><div>Most Viewed</div></div>
+                <div className={s.navbar_row}><div>Liked</div></div>
+                <div className={s.navbar_row}><div>Payment</div></div>
             </div>
             <div className={s.navbar_section}>
-                <div className={s.navbar_row}><a>Help</a></div>
-                <div className={s.navbar_row}><a>Setting</a></div>
-                <div className={s.navbar_row}><a>Send Feedback</a></div>
+                <div className={s.navbar_row}><div>Help</div></div>
+                <div className={s.navbar_row}><div>Setting</div></div>
+                <div className={s.navbar_row}><div>Send Feedback</div></div>
             </div>
         </div>
     )

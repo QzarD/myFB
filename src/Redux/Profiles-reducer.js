@@ -55,7 +55,7 @@ const profileReducer=(state=initialState, action)=> {
             return {...state,
                 followingInProgress:action.isFetching
                 ? [...state.followingInProgress, action.userId]
-                : state.followingInProgress.filter(id => id != action.userId)
+                : state.followingInProgress.filter(id => id !== action.userId)
             }
         }
         default:
@@ -74,10 +74,10 @@ export const getUsers=(CurrentPage, pageSize)=>{
     return (dispatch)=>{
         dispatch(toggleIsFetching(true));
         usersAPI.getUsers(CurrentPage, pageSize)
-            .then(data => {
+            .then(response => {
                 dispatch(toggleIsFetching(false));
-                dispatch(setProfiles(data.items));
-                dispatch(setTotalProfilesCount(data.totalCount));
+                dispatch(setProfiles(response.data.items));
+                dispatch(setTotalProfilesCount(response.data.totalCount));
             });
     }
 };
@@ -85,8 +85,8 @@ export const follow=(profileId)=>{
     return (dispatch)=>{
         dispatch(toggleFollowingProgress(true, profileId));
         usersAPI.follow(profileId)
-            .then(data=>{
-                if (data.resultCode==0){
+            .then(response=>{
+                if (response.data.resultCode===0){
                     dispatch(followSuccess(profileId))
                 }
                 dispatch(toggleFollowingProgress(false, profileId));
@@ -97,8 +97,8 @@ export const unfollow=(profileId)=>{
     return (dispatch)=>{
         dispatch(toggleFollowingProgress(true, profileId));
         usersAPI.unfollow(profileId)
-            .then(data=>{
-                if (data.resultCode==0){
+            .then(response=>{
+                if (response.data.resultCode===0){
                     dispatch(unfollowSuccess(profileId))
                 }
                 dispatch(toggleFollowingProgress(false, profileId));
