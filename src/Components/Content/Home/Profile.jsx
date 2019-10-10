@@ -8,7 +8,7 @@ import {Field, reduxForm} from "redux-form";
 const FormAddPost = (props) => {
     return <div>
         <form onSubmit={props.handleSubmit}>
-            <Field type="textarea" name="textNewPost" placeholder="Input text" component="input"/>
+            <Field type="textarea" name="textNewPost" placeholder="Input text" component="textarea"/>
             <button>PushPost</button>
         </form>
     </div>

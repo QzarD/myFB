@@ -1,5 +1,5 @@
 import React from "react";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/dialog-reducer";
+import {addMessageActionCreator} from "../../../Redux/dialog-reducer";
 import Messages from "./Messages";
 import {connect} from "react-redux";
 import {compose} from "redux";
@@ -15,7 +15,6 @@ class MessagesContainer extends React.Component{
 
 let mapStateToProps = (state) => {
     return {
-        newMessageText: state.messagesPage.newMessageText,
         dialogs: state.messagesPage.dialogs,
         messages: state.messagesPage.messages
     }
@@ -23,6 +22,6 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps,
-        {addMessageActionCreator, updateNewMessageTextActionCreator}),
+        {addMessageActionCreator}),
 )(MessagesContainer);
 

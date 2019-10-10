@@ -29,7 +29,9 @@ const Header=(props)=> {
             <div className="icoMessage"></div>
             <div className="icoBell"></div>
             <div className="signIn">
-                {props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>}
+                {props.isAuth
+                    ? <div>{props.login} <button onClick={props.logout}>Logout</button></div>
+                    : <NavLink to={'/login'}>Login</NavLink>}
             </div>
         </div>
     )
