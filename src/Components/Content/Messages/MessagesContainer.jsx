@@ -3,6 +3,7 @@ import {addMessageActionCreator} from "../../../Redux/dialog-reducer";
 import Messages from "./Messages";
 import {connect} from "react-redux";
 import {compose} from "redux";
+import {getDialogs, getMessages} from "../../../Redux/dialog-selectors";
 
 
 class MessagesContainer extends React.Component{
@@ -15,8 +16,8 @@ class MessagesContainer extends React.Component{
 
 let mapStateToProps = (state) => {
     return {
-        dialogs: state.messagesPage.dialogs,
-        messages: state.messagesPage.messages
+        dialogs: getDialogs(state),
+        messages: getMessages(state)
     }
 };
 

@@ -10,6 +10,13 @@ import FindProfiles from "./FindProfiles";
 import Preloader from "../../Common/Preloader/Preloader";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {
+    getCurrentPage, getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getProfiles,
+    getTotalUsersCount
+} from "../../../Redux/users-selectors";
 
 
 class FindProfilesContainer extends React.Component {
@@ -40,12 +47,12 @@ class FindProfilesContainer extends React.Component {
 
 let mapStateToProps=(state)=>{
     return{
-        profiles:state.profilesPage.profiles,
-        pageSize:state.profilesPage.pageSize,
-        totalProfilesCount:state.profilesPage.totalUsersCount,
-        currentPage:state.profilesPage.currentPage,
-        isFetching:state.profilesPage.isFetching,
-        followingInProgress:state.profilesPage.followingInProgress,
+        profiles:getProfiles(state),
+        pageSize:getPageSize(state),
+        totalProfilesCount:getTotalUsersCount(state),
+        currentPage:getCurrentPage(state),
+        isFetching:getIsFetching(state),
+        followingInProgress:getFollowingInProgress(state),
     }
 };
 

@@ -1,10 +1,11 @@
 import React from "react";
-import {addPost, getStatus, getUserId, updateStatus} from "../../../Redux/post-reducer";
+import {addPost, getStatusAPI, getUserId, updateStatus} from "../../../Redux/user-reducer";
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import {withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {getPosts, getProfile, getStatus} from "../../../Redux/profile-selectors";
 
 class ProfileContainer extends React.Component{
     componentDidMount() {
@@ -13,7 +14,7 @@ class ProfileContainer extends React.Component{
             userId=1774;
         }
         this.props.getUserId(userId);
-        this.props.getStatus(userId);
+        this.props.getStatusAPI(userId);
     }
 
     render() {
@@ -26,15 +27,15 @@ class ProfileContainer extends React.Component{
 
 let mapStateToProps=(state)=>{
     return {
-        posts:state.postsPage.posts,
-        profile:state.postsPage.profile,
-        status: state.postsPage.status
+        posts:getPosts(state),
+        profile:getProfile(state),
+        status: getStatus(state)
     }
 };
 
 export default compose(
     connect(mapStateToProps,
-        {addPost, getUserId, getStatus, updateStatus}),
+        {addPost, getUserId, getStatusAPI, updateStatus}),
     withRouter,
     withAuthRedirect
 )(ProfileContainer);

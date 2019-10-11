@@ -1,5 +1,5 @@
 import dialogReducer from "./dialog-reducer";
-import postReducer from "./post-reducer";
+import userReducer from "./user-reducer";
 
 let store={
     _state: {
@@ -39,7 +39,7 @@ let store={
 
     dispatch(action){
         this._state.messagesPage=dialogReducer(this._state.messagesPage, action);
-        this._state.postsPage=postReducer(this._state.postsPage, action);
+        this._state.postsPage=userReducer(this._state.postsPage, action);
         this._rerenderEntireTree(this._state);
     }
 };

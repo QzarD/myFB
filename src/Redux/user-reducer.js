@@ -14,7 +14,7 @@ let initialState={
     status: '',
 }
 
-const postReducer=(state=initialState, action)=> {
+const userReducer=(state=initialState, action)=> {
     switch (action.type) {
         case ADD_POST:
             let newPost = {id: 5, post: action.textNewPost};
@@ -43,7 +43,7 @@ export const getUserId=(userId)=>{
             });
     }
 }
-export const getStatus=(userId)=>(dispatch)=>{
+export const getStatusAPI=(userId)=>(dispatch)=>{
         profileAPI.getStatus(userId)
             .then(response => {
                 dispatch(setStatus(response.data));
@@ -58,4 +58,4 @@ export const updateStatus=(status)=>(dispatch)=>{
             });
 }
 
-export default postReducer;
+export default userReducer;

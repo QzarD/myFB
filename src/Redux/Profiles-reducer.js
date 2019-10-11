@@ -70,10 +70,10 @@ export const setCurrentPage=(currentPage)=>({type: SET_CURRENT_PAGE, currentPage
 export const setTotalProfilesCount=(totalProfilesCount)=>({type: SET_TOTAL_PROFILES_COUNT, count:totalProfilesCount});
 export const toggleIsFetching=(isFetching)=>({type: TOGGLE_IS_FETCHING, isFetching});
 export const toggleFollowingProgress=(isFetching, userId)=>({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId});
-export const getUsers=(CurrentPage, pageSize)=>{
+export const getUsers=(page, pageSize)=>{
     return (dispatch)=>{
         dispatch(toggleIsFetching(true));
-        usersAPI.getUsers(CurrentPage, pageSize)
+        usersAPI.getUsers(page, pageSize)
             .then(response => {
                 dispatch(toggleIsFetching(false));
                 dispatch(setProfiles(response.data.items));

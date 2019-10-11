@@ -9,6 +9,7 @@ import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {initializeApp} from "./Redux/app-reducer";
 import Preloader from "./Components/Common/Preloader/Preloader";
+import {getInitialized} from "./Redux/app-selectors";
 
 class App extends Component {
 
@@ -39,7 +40,7 @@ class App extends Component {
 }
 
 const mapStateToProps=(state)=>({
-    initialized: state.app.initialized,
+    initialized: getInitialized(state),
 })
 export default compose(
     withRouter,

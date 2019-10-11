@@ -1,5 +1,5 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import postReducer from "./post-reducer";
+import userReducer from "./user-reducer";
 import dialogReducer from "./dialog-reducer";
 import profileReducer from "./Profiles-reducer";
 import authReducer from "./auth-reducer";
@@ -10,7 +10,7 @@ import appReducer from "./app-reducer";
 
 let reducers=combineReducers({
     messagesPage:dialogReducer,
-    postsPage:postReducer,
+    postsPage:userReducer,
     profilesPage:profileReducer,
     auth:authReducer,
     form:formReducer,
