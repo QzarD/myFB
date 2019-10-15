@@ -21,7 +21,7 @@ import {
 
 class FindProfilesContainer extends React.Component {
     componentDidMount() {
-        this.props.getUsers(this.props.CurrentPage, this.props.pageSize);
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
     onPageChanged = (pageNumber) => {

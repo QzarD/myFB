@@ -10,8 +10,9 @@ const TOGGLE_IS_FOLLOWING_PROGRESS='TOGGLE_IS_FOLLOWING_PROGRESS';
 
 let initialState={
     profiles:[ ],
-    pageSize: 5,
+    pageSize: 10,
     totalProfilesCount: 0,
+    portionSize: 10,
     currentPage: 1,
     isFetching:false,
     followingInProgress:[ ]
