@@ -15,7 +15,7 @@ const FindProfiles=(props)=>{
                        portionSize={props.portionSize}/>
             {
                 props.profiles.map(p => <div key={p.id} className={styles.profile}>
-                    <div>
+                    <div className={styles.photo}>
                         <NavLink to={'/profile/'+p.id}>
                             <img src={p.photos.small != null ? p.photos.small : userPhoto} alt=""/>
                         </NavLink>

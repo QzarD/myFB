@@ -1,17 +1,17 @@
 import React from "react";
-import s from './Header.module.css';
+import styles from './Header.module.css';
 import logo from '../../img/logo192.png';
 import {NavLink} from "react-router-dom";
 
 const Header=(props)=> {
     return (
-        <div className={`${s.inner} max-width`}>
-            <div className={s.menu}>
+        <div className={`${styles.inner} max-width`}>
+            <div className={styles.menu}>
                 <button className="c-hamburger c-hamburger-line">
-                    <span>Menu</span>
+                    <a href={'http://localhost:3000/'}>Menu</a>
                 </button>
             </div>
-            <div className={s.logo}>
+            <div className={styles.logo}>
                 <img src={logo} alt="logo192"/>
             </div>
             <div className="nameSite">

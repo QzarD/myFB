@@ -13,3 +13,7 @@ span{
     cursor: pointer;
     margin: 5px;
 }
+
+.photo{
+    max-height: 40px;
+}

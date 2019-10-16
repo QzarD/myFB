@@ -13,3 +13,6 @@
     box-shadow: none;
     cursor: pointer;
 }
+.logo img{
+    max-height: 25px;
+}
