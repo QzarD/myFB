@@ -28,6 +28,7 @@ const Profile = (props) => {
             <ProfileInfo
                 profile={props.profile}
                 status={props.status}
+                saveProfileInfo={props.saveProfileInfo}
                 updateStatus={props.updateStatus}/>
             <h3>Posts:</h3>
             <div>

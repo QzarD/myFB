@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './FindProfiles.module.css';
-import userPhoto from '../../../img/userPhoto.jpg'
+import userPhoto from '../../../img/userPhoto.jpg';
 import {NavLink} from "react-router-dom";
 import Paginator from "../../Common/Paginator/Paginator";
 

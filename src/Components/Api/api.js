@@ -23,6 +23,9 @@ export const profileAPI={
     getUserId(userId){
         return instanse.get(`profile/${userId}`)
     },
+    saveProfileInfo(profile){
+        return instanse.put(`profile/`, profile)
+    },
     getStatus(userId){
         return instanse.get(`profile/status/${userId}`)
     },

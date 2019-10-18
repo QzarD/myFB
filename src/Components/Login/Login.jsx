@@ -35,9 +35,11 @@ const LoginForm = (props) => {
                         component="input"/> rememberMe
                 </div>
                 <div>
-                    {props.error && <div>
-                        {props.error}
-                    </div>}
+                    {props.error &&
+                        <div>
+                            {props.error}
+                        </div>
+                    }
                 </div>
                 <div>
                     <button>Login</button>
@@ -53,7 +55,7 @@ const Login = (props) => {
     const onSubmit = (formData) => {
         props.login(formData.email, formData.password, formData.rememberMe)
     }
-    if (props.isAuth){
+    if (props.isAuth) {
         return <Redirect to={"/profile"}/>
     }
     return (
@@ -63,10 +65,10 @@ const Login = (props) => {
     )
 }
 
-const mapStateToProps=(state)=>{
+const mapStateToProps = (state) => {
     return {
-        isAuth:state.auth.isAuth
+        isAuth: state.auth.isAuth
     }
 }
 
-export default connect(mapStateToProps,{login})(Login);
+export default connect(mapStateToProps, {login})(Login);

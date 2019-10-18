@@ -26,25 +26,19 @@ const ProfileStatus =(props)=>{
             })
         }
     }*/
-        return (
-            <div>
+        return (<>
                 {!editMode
-                 ?   <div>
-                        <span
+                 ?   <span
                             onDoubleClick={activateEditMode}>
                             {status || "Change status"}</span>
-                    </div>
 
-                :
-                    <div>
-                        <input
+                :   <input
                             onChange={onStatusChange}
                             autoFocus={true}
                             onBlur={deactivateEditMode}
                             value={status}/>
-                    </div>
                 }
-            </div>
+            </>
         )
 }
 
