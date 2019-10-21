@@ -4,3 +4,6 @@
 .contacts{
     padding-left: 20px;
 }
+.photoLarge{
+    max-height: 300px;
+}

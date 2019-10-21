@@ -5,7 +5,7 @@ const Post=(props)=> {
 
     return (
             <div className={s.post}>
-                <div>
+                <div className={s.postImg}>
                     <img src="https://i.ytimg.com/vi/CD6wLmLTbSk/sddefault.jpg" alt="img"/>
                 </div>
                 <div>Kostya:</div>

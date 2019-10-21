@@ -2,7 +2,7 @@
     background-color: gold;
 }
 
-img{
+.postImg img{
     max-height: 50px;
     border-radius: 50px;
 }

@@ -24,12 +24,14 @@ const Profile = (props) => {
     }
     return (
         <div className={s.home}>
-            <div>This Home page! This Home page!This Home page!This Home page!</div>
             <ProfileInfo
                 profile={props.profile}
                 status={props.status}
                 saveProfileInfo={props.saveProfileInfo}
-                updateStatus={props.updateStatus}/>
+                updateStatus={props.updateStatus}
+                isOwner={props.isOwner}
+                savePhoto={props.savePhoto}
+            />
             <h3>Posts:</h3>
             <div>
                 {postsElements}

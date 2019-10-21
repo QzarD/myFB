@@ -6,7 +6,7 @@ import styles from './Profile.module.css'
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../../Common/Forms/FormsControls";
 
-const ProfileInfo = ({profile, status, updateStatus, saveProfileInfo}) => {
+const ProfileInfo = ({profile, status, updateStatus, saveProfileInfo, isOwner, savePhoto}) => {
     let [editMode, setEditMode] = useState(false);
     if (!profile) {
         return <Preloader/>
@@ -21,12 +21,21 @@ const ProfileInfo = ({profile, status, updateStatus, saveProfileInfo}) => {
                 setEditMode(false)
             }
         )
+    };
+
+    const selectPhoto=(e)=>{
+        if (e.target.files.length){
+            savePhoto(e.target.files[0])
+        }
     }
 
     return (
         <div>
             <div>
-                <img src={!profile.photos.large ? userPhoto : profile.photos.large} alt=""/>
+                <div className={styles.photoLarge}>
+                    <img src={profile.photos.large || userPhoto} alt=""/>
+                </div>
+                {isOwner && <input type="file" onChange={selectPhoto}/>}
             </div>
             <div>
                 <b>Status:</b> <ProfileStatus
