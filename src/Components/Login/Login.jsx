@@ -35,6 +35,15 @@ const LoginForm = (props) => {
                         component="input"/> rememberMe
                 </div>
                 <div>
+                    <div>
+                        {props.captchaUrl && <img src={props.captchaUrl} alt="captcha"/>}
+                    </div>
+                    <div>
+                        {props.captchaUrl && <Field required={true} name="captcha" component={Input}/>}
+                    </div>
+
+                </div>
+                <div>
                     {props.error &&
                         <div>
                             {props.error}
@@ -53,21 +62,22 @@ const LoginReduxForm = reduxForm({form: 'Login'})(LoginForm)
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
     if (props.isAuth) {
         return <Redirect to={"/profile"}/>
     }
     return (
         <div>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl
     }
 }
 
