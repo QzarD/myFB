@@ -12,9 +12,16 @@ import Preloader from "./Components/Common/Preloader/Preloader";
 import {getInitialized} from "./Redux/app-selectors";
 
 class App extends Component {
+    catchAllUnhandledErrors=(reason,promise)=>{
+        alert ("Some error occured")
+    }
 
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener("unhandledrejection",this.catchAllUnhandledErrors)
+    }
+    componentWillUnmount() {
+        window.removeEventListener("unhandledrejection",this.catchAllUnhandledErrors)
     }
 
     render() {
