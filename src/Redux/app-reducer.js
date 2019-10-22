@@ -1,6 +1,6 @@
 import {getAuthUserData} from "./auth-reducer";
 
-const INITIALIZED_SUCCESS='INITIALIZED_SUCCESS';
+const INITIALIZED_SUCCESS='app/INITIALIZED_SUCCESS';
 
 let initialState={
     initialized: false,
@@ -9,10 +9,7 @@ let initialState={
 const appReducer=(state=initialState, action)=> {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
-            return {
-                ...state,
-                initialized: true
-            };
+            return {...state, initialized: true};
         default:
             return state;
     }

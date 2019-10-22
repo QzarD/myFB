@@ -1,7 +1,7 @@
 import dialogReducer from "./dialog-reducer";
 import userReducer from "./user-reducer";
 
-let store={
+let _Store={
     _state: {
         messagesPage:{
             dialogs: [
@@ -44,5 +44,5 @@ let store={
     }
 };
 
-export default store;
-window.state=store;
+export default _Store;
+window.state=_Store;

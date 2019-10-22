@@ -16,7 +16,7 @@ import {
     getPageSize,
     getProfiles,
     getTotalUsersCount
-} from "../../../Redux/users-selectors";
+} from "../../../Redux/profiles-selectors";
 
 
 class FindProfilesContainer extends React.Component {

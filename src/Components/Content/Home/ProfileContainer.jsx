@@ -5,7 +5,7 @@ import Profile from "./Profile";
 import {withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
-import {getPosts, getProfile, getStatus} from "../../../Redux/profile-selectors";
+import {getPosts, getProfile, getStatus} from "../../../Redux/user-selectors";
 
 class ProfileContainer extends React.Component{
     authUserId (){
