@@ -1,38 +1,47 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from './Header.module.css';
-import logo from '../../img/logo192.png';
 import {NavLink} from "react-router-dom";
+import Menu from "./Menu/Menu";
 
-const Header=(props)=> {
+const Header = (props) => {
+    const [statusMenu, setStatusMenu] = useState(false);
+    const onMenu = () => {
+        setStatusMenu(true)
+    };
+    const offMenu = () => {
+        setStatusMenu(false)
+    };
+
     return (
-        <div className={`${styles.inner} max-width`}>
-            <div className={styles.menu}>
-                <button className="c-hamburger c-hamburger-line">
-                    <a href={'http://localhost:3000/'}>Menu</a>
-                </button>
-            </div>
-            <div className={styles.logo}>
-                <img src={logo} alt="logo192"/>
-            </div>
-            <div className="nameSite">
-                <span>YouListing</span>
-            </div>
-            <div className="search">
-                <input type="text"/>
-            </div>
-            <div className="button">
-                <button>+ Add Listing</button>
-            </div>
-            <div className="icoHome">
+        <div className={styles.header}>
+            <div className={`${styles.inner} max-width`}>
+                <div className={styles.menu}>
+                    {statusMenu
+                        ? <label onClick={offMenu} className={styles.btnMenuOff} htmlFor="hmt">
+                            <span className={styles.first}/>
+                            <span className={styles.second}/>
+                            <span className={styles.third}/>
+                        </label>
+                        : <label onClick={onMenu} className={styles.btnMenu} htmlFor="hmt">
+                            <span className={styles.first}/>
+                            <span className={styles.second}/>
+                            <span className={styles.third}/>
+                        </label>
+                    }
+                </div>
 
+                <div className={styles.nameSite}>
+                    <a href={'http://localhost:3000/'}>YouWant</a>
+                </div>
+                <div className={styles.signIn}>
+                    {props.isAuth
+                        ? <div>{props.login}
+                            <button onClick={props.logout}>Logout</button>
+                        </div>
+                        : <NavLink to={'/login'}>Login</NavLink>}
+                </div>
             </div>
-            <div className="icoMessage"></div>
-            <div className="icoBell"></div>
-            <div className="signIn">
-                {props.isAuth
-                    ? <div>{props.login} - <button onClick={props.logout}>Logout</button></div>
-                    : <NavLink to={'/login'}>Login</NavLink>}
-            </div>
+            <Menu statusMenu={statusMenu}/>
         </div>
     )
 }

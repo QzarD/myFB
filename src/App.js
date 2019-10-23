@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './App.css';
-import Navbar from "./Components/Navbar/Navbar";
 import Content from "./Components/Content/Content";
 import Footer from "./Components/Footer/Footer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
@@ -31,9 +30,6 @@ class App extends Component {
                 <header className="app-header">
                     <HeaderContainer/>
                 </header>
-                <div className="navbar">
-                    <Navbar/>
-                </div>
                 <div className="content">
                     <Content/>
                 </div>

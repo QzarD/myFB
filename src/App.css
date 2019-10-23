@@ -16,14 +16,6 @@
 box-shadow: 0 0 20px #000000;
 }
 
-.navbar{
-    display: block;
-    position: absolute;
-    width: 200px;
-    border-right: 1px solid #000000;
-    background-color: #d6d6d6;
-}
-
 .content{
     z-index: -1;
     background-color: #153467;

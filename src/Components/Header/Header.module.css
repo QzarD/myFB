@@ -1,18 +1,62 @@
+.header{
+
+}
 .inner {
     display: flex;
     justify-content: space-between;
-    padding: 15px 0;
+    padding: 5px 0;
 }
-
-.c-hamburger {
-    display: block;
-    overflow: hidden;
-    width: 34px;
-    height: 34px;
-    font-size: 0;
-    box-shadow: none;
-    cursor: pointer;
-}
-.logo img{
+.logo{
     max-height: 25px;
 }
+.menu {
+    width: 200px;
+}
+.btnMenu, .btnMenuOff {
+    color: #c1c1c1;
+    padding: 5px;
+    cursor: pointer;
+    width: 38px;
+    position: fixed;
+}
+.btnMenu span , .btnMenuOff span {
+    display: block;
+    height: 3px;
+    background-color: #c1c1c1;
+    margin: 5px 0 0;
+    position: relative;
+}
+.btnMenu span.first , .btnMenuOff span.first {
+    margin-top: 3px;
+}
+.btnMenuOff span.first{
+    -webkit-transform: rotate(45deg);
+    top: 8px;
+}
+.btnMenuOff span.second{
+    opacity: 0;
+}
+.btnMenuOff span.third{
+    -webkit-transform: rotate(-45deg);
+    top: -8px;
+}
+.nameSite{
+    font-size: 25px;
+    font-weight: bold;
+}
+.nameSite a{
+    text-decoration: none;
+    color: #35343c;
+}
+.signIn{
+    color: #35343c;
+    font-size: 15px;
+    margin-top: 5px;
+    width: 200px;
+    text-align: right;
+}
+.signIn button{
+    font-size:10px;
+}
+
+

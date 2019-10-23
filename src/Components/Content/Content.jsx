@@ -10,7 +10,7 @@ const FindProfilesContainer=React.lazy(()=>import("./FindProfiles/FindProfilesCo
 //import MessagesContainer from "./Messages/MessagesContainer";
 const MessagesContainer=React.lazy(()=>import("./Messages/MessagesContainer"));
 
-const Content=(props)=> {
+const Content=React.memo(props => {
     return (
         <div className={`${s.inner} max-width`}>
             <Switch>
@@ -40,5 +40,5 @@ const Content=(props)=> {
             </Switch>
         </div>
     )
-}
+});
 export default Content;

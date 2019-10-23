@@ -1,0 +1,33 @@
+.menu{
+    display: block;
+    position: absolute;
+    width: 220px;
+    border-right: 1px solid #000000;
+    background-color: #d6d6d6;
+}
+.menuHide{
+    display: block;
+    position: absolute;
+    width: 220px;
+    border-right: 1px solid #000000;
+    background-color: #d6d6d6;
+    top: 43px;
+    left: -220px;
+}
+.menu_section{
+    border-bottom: 1px solid #000000;
+    padding-bottom: 15px;
+}
+.menu_row{
+    padding-left: 50px;
+    margin-top: 15px;
+}
+.menu_row a{
+    text-decoration: none;;
+}
+.menu_row  a{
+    color: black;
+}
+.menu_row  a.active{
+     color: green;
+ }
