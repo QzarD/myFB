@@ -8,17 +8,15 @@
 }
 
 .app {
-
+    color: #35343c;
 }
 
 .app-header {
     z-index: 1;
-box-shadow: 0 0 20px #000000;
+box-shadow: 0 0 10px #c3c3c3;
 }
 
 .content{
-    z-index: -1;
-    background-color: #153467;
     min-height: 500px;
 }
 

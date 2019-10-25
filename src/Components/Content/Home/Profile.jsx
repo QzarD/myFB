@@ -12,16 +12,16 @@ const FormAddPost = (props) => {
             <button>PushPost</button>
         </form>
     </div>
-}
+};
 
-const AddPostReduxSubmit = reduxForm({form:'AddPost'})(FormAddPost)
+const AddPostReduxSubmit = reduxForm({form:'AddPost'})(FormAddPost);
 
 const Profile = (props) => {
     let postsElements = props.posts.map(p => <Post text={p.post} key={p.id} id={p.id}/>);
 
     let onSubmit=(value)=>{
         props.addPost(value.textNewPost)
-    }
+    };
     return (
         <div className={s.home}>
             <ProfileInfo
@@ -39,7 +39,7 @@ const Profile = (props) => {
             <AddPostReduxSubmit onSubmit={onSubmit}/>
         </div>
     )
-}
+};
 
 
 

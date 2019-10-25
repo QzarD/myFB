@@ -16,6 +16,9 @@ const Menu=({statusMenu})=> {
                 <div className={styles.menu_row}>
                     <NavLink to="/messages" activeClassName={styles.active}>Messages</NavLink>
                 </div>
+                <div className={styles.menu_row}>
+                    <NavLink to="/dashboard" activeClassName={styles.active}>Dashboard</NavLink>
+                </div>
             </div>
             <div className={styles.menu_section}>
                 <div className={styles.menu_row}><div>Do You Want <b>Buy?</b></div></div>

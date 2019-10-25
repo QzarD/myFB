@@ -29,7 +29,6 @@ const Header = (props) => {
                         </label>
                     }
                 </div>
-
                 <div className={styles.nameSite}>
                     <a href={'http://localhost:3000/'}>YouWant</a>
                 </div>

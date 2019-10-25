@@ -6,16 +6,13 @@ import {withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {getPosts, getProfile, getStatus} from "../../../Redux/user-selectors";
+import {getUserIdFromState} from "../../../Redux/auth-selectors";
 
 class ProfileContainer extends React.Component{
     authUserId (){
-        let userId=this.props.match.params.userId;
+        let userId=this.props.userId;
         if (!userId){
-            userId=1774;
-            /*            userId=this.props.authorizedUserId;
-                        if (!userId){
-                            this.props.history.push("/login")
-                        }*/
+            this.props.history.push("/login")
         }
         this.props.getUserId(userId);
         this.props.getStatusAPI(userId);
@@ -25,7 +22,7 @@ class ProfileContainer extends React.Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.match.params.userId != prevProps.match.params.userId) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId) {
             this.authUserId ()
         }
     }
@@ -44,7 +41,8 @@ let mapStateToProps=(state)=>{
     return {
         posts:getPosts(state),
         profile:getProfile(state),
-        status: getStatus(state)
+        status: getStatus(state),
+        userId:getUserIdFromState(state)
     }
 };
 

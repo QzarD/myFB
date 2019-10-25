@@ -9,6 +9,8 @@ const ProfileContainer=React.lazy(()=>import("./Home/ProfileContainer"));
 const FindProfilesContainer=React.lazy(()=>import("./FindProfiles/FindProfilesContainer"));
 //import MessagesContainer from "./Messages/MessagesContainer";
 const MessagesContainer=React.lazy(()=>import("./Messages/MessagesContainer"));
+//import DashboardContainer from "./Dashboard/DashboardContainer";
+const DashboardContainer=React.lazy(()=>import("./Dashboard/DashboardContainer"));
 
 const Content=React.memo(props => {
     return (
@@ -30,6 +32,12 @@ const Content=React.memo(props => {
                 <Route path='/messages' render={() =>
                     <React.Suspense fallback={<div>Loading...</div>}>
                         <MessagesContainer/>
+                    </React.Suspense>
+                }
+                />
+                <Route path='/dashboard' render={() =>
+                    <React.Suspense fallback={<div>Loading...</div>}>
+                        <DashboardContainer/>
                     </React.Suspense>
                 }
                 />

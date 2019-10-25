@@ -7,3 +7,6 @@ export const getIsAuth = (state)=>{
 export const getLogin = (state)=>{
     return state.auth.login;
 };
+export const getUserIdFromState = (state)=>{
+    return state.auth.userId;
+};

@@ -1,13 +1,13 @@
 .menu{
     display: block;
-    position: absolute;
+    position: fixed;
     width: 220px;
     border-right: 1px solid #000000;
     background-color: #d6d6d6;
 }
 .menuHide{
     display: block;
-    position: absolute;
+    position: fixed;
     width: 220px;
     border-right: 1px solid #000000;
     background-color: #d6d6d6;

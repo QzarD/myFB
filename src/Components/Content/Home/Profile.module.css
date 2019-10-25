@@ -1,9 +1,20 @@
 .home{
-    background-color: gold;
+    padding: 30px 60px;
 }
 .contacts{
     padding-left: 20px;
 }
+.photoLarge img{
+    max-height: 150px;
+    border-radius: 5px;
+}
+.photoRow{
+    display: flex;
+}
 .photoLarge{
-    max-height: 300px;
+    position: relative;
+}
+.photoBtn{
+    position: absolute;
+    top: 150px;
 }
