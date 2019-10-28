@@ -1,11 +1,25 @@
 import React,{useState} from "react";
 import Card from "./Card";
 import styles from "./Dashboard.module.css"
+import {Field, reduxForm} from "redux-form";
+
+
+const FormAddCard = (props) => {
+    return <div className={styles.sectionAddCard}>
+        <form onSubmit={props.handleSubmit}>
+            <Field type="textarea" name="textNewCard" placeholder="Введите текст карточки" component="textarea"/>
+            <div className={styles.btnAddCardNow_Row}>
+                <button className={styles.btnAddCardNow}>Добавить карточку</button>
+                <div className={styles.btnCancelAddCard} onClick={props.offEditPanel}>X</div>
+            </div>
+        </form>
+    </div>
+};
+const AddCardReduxSubmit = reduxForm({form:'AddCard'})(FormAddCard);
 
 
 const Dashboard=(props)=>{
     const [editPanel, setEditPanel]=useState(false);
-    const [textNewCard, setTextNewCard]=useState('');
     const onEditPanel=()=>{
         setEditPanel(true)
     };
@@ -13,32 +27,26 @@ const Dashboard=(props)=>{
         setEditPanel(false)
     };
 
-    const addCardWithText=()=>{
-        console.log(textNewCard);
+    const onSubmit=(value)=>{
+        props.addCard(value.textNewCard);
         setEditPanel(false)
-    }
+    };
 
-    const cardsElements = props.cards.map(c=><Card id={c.id} text={c.text} key={c.id}/>);
+    const cardsElements = props.cards.map(c=><Card id={c.id} title={c.title} text={c.text} key={c.id}/>);
 
     return(
         <div className={styles.dashboardHome}>
             <div className={styles.column}>
-                <div className={styles.nameColumn}>
-                    "Задачи на неделю"
-                </div>
+                {props.cards.title[1] &&
+                    <div className={styles.nameColumn}>
+                        {props.cards.title[1]}
+                    </div>
+                }
                 <div>
                     {cardsElements}
                 </div>
                 {editPanel
-                ? <div className={styles.sectionAddCard}>
-                        <div>
-                            <textarea onChange={setTextNewCard} name="newTextCard" placeholder="Введите текст карточки"/>
-                        </div>
-                        <div className={styles.btnAddCardNow_Row}>
-                            <div className={styles.btnAddCardNow} onClick={addCardWithText}>Добавить карточку</div>
-                            <div className={styles.btnCancelAddCard} onClick={offEditPanel}>X</div>
-                        </div>
-                    </div>
+                ? <AddCardReduxSubmit onSubmit={onSubmit} offEditPanel={offEditPanel}/>
                 : <div className={styles.btnAddCard} onClick={onEditPanel}>
                         + Добавить карточку
                     </div>
