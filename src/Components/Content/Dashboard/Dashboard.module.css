@@ -5,15 +5,22 @@
     background-repeat: no-repeat;
     padding: 10px;
 }
+.dashboard{
+    display: flex;
+    align-items: flex-start;
+}
 .column{
     background-color: #a7a7a7;
-    max-width: 220px;
+    width: 170px;
     padding: 5px 0;
     border-radius: 5px;
+    margin: 10px;
 }
 .nameColumn{
-    padding-left: 5px;
+    padding: 0 7px;
     color: black;
+    display: flex;
+    justify-content: space-between;
 }
 .btnAddCard{
     padding-left: 10px;
@@ -31,6 +38,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 5px;
+    padding: 0 7px;
 }
 .btnAddCardNow{
     cursor: pointer;

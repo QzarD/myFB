@@ -3,6 +3,7 @@ import styles from "./Dashboard.module.css"
 import {Field} from "redux-form";
 import React from "react";
 import AddForm from "./AddForm";
+import Card from "./Card";
 
 
 const Column =({columnIndex, title, cards, addColumn, addCard, deleteColumn})=>{
@@ -12,12 +13,11 @@ const Column =({columnIndex, title, cards, addColumn, addCard, deleteColumn})=>{
             deleteColumn(columnIndex)
         }
     }
-
     return (
-        <div className={"column"}>
+        <div className={styles.column}>
             <div className="column__inner">
                 {title && (
-                    <div className="column__title">
+                    <div className={styles.nameColumn}>
                         <b>{title}</b>
                         <div onClick={deleteColumnAgree} className="column__remove">
                             X
@@ -27,7 +27,7 @@ const Column =({columnIndex, title, cards, addColumn, addCard, deleteColumn})=>{
                 {cards && (
                     <div className="column__items">
                         {cards.map((card, index) => (
-                            <Card key={index}>{card}</Card>
+                            <Card key={index} card={card}/>
                         ))}
                     </div>
                 )}

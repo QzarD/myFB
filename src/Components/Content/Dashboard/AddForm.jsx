@@ -1,10 +1,20 @@
-import React, {useState, Fragment} from "react";
+import React, {useState, Fragment, useRef, useEffect} from "react";
 import {addCard, addColumn} from "../../../Redux/dashboard-reducer";
+import Button from "./Button";
+import Card from "./Card";
+import styles from "./Dashboard.module.css"
 
 
-const AddForm = ({columnIndex, addCard, addColumn, isEmptyColumn}) => {
+const AddForm = ({columnIndex, children, addCard, addColumn, isEmptyColumn}) => {
     const [showForm, setShowForm] = useState(false);
     const [value, setValue] = useState("");
+    const textareaRef=useRef(null);
+
+    useEffect(()=>{
+        if (textareaRef.current){
+            textareaRef.current.focus()
+        }
+    }, [showForm]);
 
     const onAdd = () => {
         if (isEmptyColumn) {
@@ -13,15 +23,19 @@ const AddForm = ({columnIndex, addCard, addColumn, isEmptyColumn}) => {
             addCard(columnIndex, value);
         }
         setValue("");
-        setShowFrom(false);
+        setShowForm(false);
     };
+
+    const offShowForm=()=>{
+        setValue("");
+        setShowForm(false)
+    }
 
     return (
         <Fragment>
             {showForm ? (
                 <div className="add-form">
                     <div className="add-form__input">
-                        <Card>
                         <textarea onChange={e => setValue(e.target.value)}
                                   value={value}
                                   placeholder={isEmptyColumn
@@ -30,19 +44,28 @@ const AddForm = ({columnIndex, addCard, addColumn, isEmptyColumn}) => {
                                   }
                                   ref={textareaRef}
                                   rows={"3"}
-                                  />
-                        </Card>
-                        <div className="add-form__bottom">
+                        />
+                        <div className={styles.btnAddCardNow_Row}>
                             <Button onClick={onAdd}>
                                 {isEmptyColumn ? "Добавить колонку" : "Добавить карточку"}
                             </Button>
-                            <span onClick={setShowForm.bind(this, false)}
+                            <span onClick={offShowForm}
                             className="add-form__bottom-clear">X</span>
                         </div>
                     </div>
                 </div>
             ):(
-
+                <div className="add-form__bottom">
+                    <div onClick={setShowForm.bind(this, true)}
+                    className="add-form__bottom-add-btn">
+                        +
+                        <span>
+                            {isEmptyColumn
+                            ? "Добавить колонку"
+                            : "Добавить карточку"}
+                        </span>
+                    </div>
+                </div>
             )}
         </Fragment>
     )

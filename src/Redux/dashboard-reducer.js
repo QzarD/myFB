@@ -1,11 +1,12 @@
 
 
 const ADD_CARD='dashboard/add_card';
-const DELETE_CARD='dashboard/add_card';
+//const DELETE_CARD='dashboard/add_card';
 const ADD_COLUMN='dashboard/add_column';
-const DELETE_COLUMN='dashboard/add_column';
+const DELETE_COLUMN='dashboard/delete_column';
 
-let initialState=[
+let initialState={
+    items:[
     {title:"На неделю",
     cards:[
         "Hi, its first card",
@@ -17,21 +18,30 @@ let initialState=[
         "Аывыв",
         "ЫЫыыыыыы",
     ]},
-];
+]};
 
 export const dashboardReducer=(state=initialState, action)=>{
     switch (action.type) {
         case ADD_CARD:
-            return state.map((item, index) =>{
+            return {
+                ...state,
+                items: state.items.map((item, index) =>{
                 if (action.payload.columnIndex === index){
-                    return {...item, cards:[...item.cards, action.payload.text]}
+                    return {...item, cards:[...item.cards, action.payload.textNewCard]}
+
                 }
                 return item;
-            });
+            })};
         case ADD_COLUMN:
-            return [...state, {title: action.payload, cards: []}];
+            return {
+                ...state,
+                items: [...state.items, {title: action.payload, cards: [] }]
+            };
         case DELETE_COLUMN:
-            return state.filter((_, index) => action.payload !== index);
+            return {
+                ...state,
+                items: [...state.items.filter((_, index) => action.payload !== index)]
+            };
         default:
             return state
     }

@@ -4,11 +4,13 @@ import {compose} from "redux";
 import Dashboard from "./Dashboard";
 import {addCard, addColumn, deleteColumn} from "../../../Redux/dashboard-reducer";
 import Column from "./Column";
+import styles from "./Dashboard.module.css"
 
 
 const DashboardContainer =({items, addColumn, addCard, deleteColumn})=>(
     <Fragment>
-        {items.map((item,index)=>(
+        <div className={styles.dashboard}>
+        {items.map((item, index)=>(
             <Column {...item}
                 key={index}
                 columnIndex={index}
@@ -18,8 +20,15 @@ const DashboardContainer =({items, addColumn, addCard, deleteColumn})=>(
             />
         ))}
         <Column addColumn={addColumn} addCard={addCard} deleteColumn={deleteColumn}/>
-    </Fragment>
-);
+        </div>
+    </Fragment>)
+;
+const mapStateToProps=(state)=>{
+    return{
+        items:state.dashboard.items
+    }
+};
+
 export default compose(
-    connect(({columns})=>({items: columns}),{addCard, addColumn, deleteColumn})
+    connect(mapStateToProps,{addCard, addColumn, deleteColumn})
 )(DashboardContainer)
