@@ -1,11 +1,9 @@
 import React, {useState, Fragment, useRef, useEffect} from "react";
-import {addCard, addColumn} from "../../../Redux/dashboard-reducer";
 import Button from "./Button";
-import Card from "./Card";
 import styles from "./Dashboard.module.css"
 
 
-const AddForm = ({columnIndex, children, addCard, addColumn, isEmptyColumn}) => {
+const AddForm = ({columnIndex, addCard, addColumn, isEmptyColumn}) => {
     const [showForm, setShowForm] = useState(false);
     const [value, setValue] = useState("");
     const textareaRef=useRef(null);

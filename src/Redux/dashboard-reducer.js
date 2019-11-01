@@ -51,16 +51,21 @@ export const dashboardReducer = (state = initialState, action) => {
                 items: [...state.items.filter((_, index) => action.payload !== index)]
             };
         case DRAG_HAPPENED:
-            return {
-                ...state,
-                items: state.items.map((item, index) => {
-                    if (action.payload.columnIndex === index) {
-                        const [removed] = item.cards.splice(action.payload.droppableIdStart, 1);
-                        item.cards.splice(action.payload.droppableIdEnd, 0, removed)
-                    }
-                    return item;
-                })
-            };
+            const {
+                droppableIdStart,
+                droppableIdEnd,
+                droppableIndexStart,
+                droppableIndexEnd,
+                draggableId
+        } = action.payload;
+
+            // in the same list
+            if (droppableIdStart === droppableIdEnd) {
+                const list = state.items[droppableIdStart];
+                const card = list.cards.splice(droppableIndexStart, 1);
+                list.cards.splice(droppableIndexEnd, 0, ...card);
+                return { ...state, [droppableIdStart]: list };
+            }
         default:
             return state
     }
@@ -74,15 +79,13 @@ export const sort = (droppableIdStart,
                      droppableIdEnd,
                      droppableIndexStart,
                      droppableIndexEnd,
-                     draggableId,
-                     columnIndex) =>
+                     draggableId) =>
     ({
         type: DRAG_HAPPENED, payload: {
             droppableIdStart,
             droppableIdEnd,
             droppableIndexStart,
             droppableIndexEnd,
-            draggableId,
-            columnIndex
+            draggableId
         }
     });

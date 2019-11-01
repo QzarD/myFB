@@ -10,8 +10,19 @@ import {DragDropContext} from 'react-beautiful-dnd';
 
 
 const DashboardContainer = ({items, addColumn, addCard, deleteColumn, sort}) => (
-
-        <Fragment>
+    <DragDropContext onDragEnd={(result) => {
+        const {destination, source, draggableId} = result;
+        if (!destination) {
+            return;
+        }
+        sort(
+            source.droppableId,
+            destination.droppableId,
+            source.index,
+            destination.index,
+            draggableId,
+        )
+    }}>
             <div className={styles.dashboard}>
                 {items.map((item, index) => (
                     <Column {...item}
@@ -25,7 +36,8 @@ const DashboardContainer = ({items, addColumn, addCard, deleteColumn, sort}) => 
                 ))}
                 <Column addColumn={addColumn} addCard={addCard} deleteColumn={deleteColumn}/>
             </div>
-        </Fragment>
+
+    </DragDropContext>
 );
 const mapStateToProps = (state) => {
     return {
