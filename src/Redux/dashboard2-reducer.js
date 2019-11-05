@@ -1,6 +1,8 @@
-const ADD_COLUMN = 'dashboard/ADD_COLUMN';
-const ADD_CARD = 'dashboard/ADD_CARD';
-const DRAG_CARD = 'dashboard/DRAG_CARD';
+const ADD_COLUMN = 'dashboard2/ADD_COLUMN';
+const DELETE_COLUMN = 'dashboard2/DELETE_COLUMN';
+const ADD_CARD = 'dashboard2/ADD_CARD';
+const DELETE_CARD = 'dashboard2/DELETE_CARD';
+const DRAG_CARD = 'dashboard2/DRAG_CARD';
 
 let columnId = 1;
 let cardId = 4;
@@ -31,6 +33,8 @@ export const dashboard2Reducer = (state = initialState, action) => {
             columnId += 1;
             return [...state,
                 {title: action.title, id: columnId, cards: []}];
+        case DELETE_COLUMN:
+            return [...state.filter((_, index) => action.index !== index)];
         case ADD_CARD:
             cardId += 1;
             return state.map(column => {
@@ -38,6 +42,16 @@ export const dashboard2Reducer = (state = initialState, action) => {
                     return {
                         ...column,
                         cards: [...column.cards, {id: cardId, text: action.text}]
+                    }
+                }
+                return column
+            });
+        case DELETE_CARD:
+            return state.map((column, index) => {
+                if (index === action.columnId) {
+                    return {
+                        ...column,
+                        cards: [...column.cards.filter((_, index) => action.index !== index)]
                     }
                 }
                 return column
@@ -79,3 +93,5 @@ export const sort = (droppableIdStart,
     droppableIdIndexEnd,
     draggableId
 });
+export const deleteColumn=(index)=>({type:DELETE_COLUMN, index});
+export const deleteCard=(columnId, index)=>({type:DELETE_CARD, columnId, index});

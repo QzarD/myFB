@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Card.module.css";
 import {Draggable} from "react-beautiful-dnd";
 
-const Card = ({text, id, index}) => {
+const Card = ({text, id, index, deleteCard, columnId}) => {
     return (
         <Draggable draggableId={String(id)} index={index}>
             {provided => (
@@ -11,7 +11,12 @@ const Card = ({text, id, index}) => {
                      {...provided.dragHandleProps}
                 >
                     <div className={styles.card}>
-                        {text}
+                        <div>
+                            {text}
+                        </div>
+                        <div onClick={()=>{deleteCard(columnId, index)}} className={styles.btnDelete}>
+                            X
+                        </div>
                     </div>
                 </div>
             )}

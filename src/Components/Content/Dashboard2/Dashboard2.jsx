@@ -3,10 +3,10 @@ import styles from "./Dashboard2.module.css"
 import {connect} from "react-redux";
 import Column from "./Column";
 import AddForm from "./AddForm";
-import {addCard, addColumn, sort} from "../../../Redux/dashboard2-reducer";
+import {addCard, addColumn, deleteCard, deleteColumn, sort} from "../../../Redux/dashboard2-reducer";
 import {DragDropContext} from "react-beautiful-dnd";
 
-const Dashboard2 = ({columns, addColumn, addCard, sort}) => {
+const Dashboard2 = ({columns, addColumn, addCard, sort, deleteColumn, deleteCard}) => {
     const onDragEnd=(result)=>{
         const {destination, source, draggableId} =result;
         if (!destination){
@@ -24,8 +24,8 @@ const Dashboard2 = ({columns, addColumn, addCard, sort}) => {
         <DragDropContext onDragEnd={onDragEnd}>
             <div className={styles.dashboardHome}>
                 <div className={styles.dashboard}>
-                    {columns.map(column => (
-                        <Column columnIndex={column.id} addColumn={addColumn} addCard={addCard} key={column.id}
+                    {columns.map((column, index) => (
+                        <Column deleteCard={deleteCard} deleteColumn={deleteColumn} columnId={index} columnIndex={column.id} addColumn={addColumn} addCard={addCard} key={column.id}
                                 title={column.title} cards={column.cards}/>
                     ))}
                     <AddForm column addColumn={addColumn}/>
@@ -39,4 +39,4 @@ const mapStateToProps = state => ({
     columns: state.dashboard2
 })
 
-export default connect(mapStateToProps, {addColumn, addCard, sort})(Dashboard2);
+export default connect(mapStateToProps, {addColumn, addCard, sort, deleteColumn, deleteCard})(Dashboard2);

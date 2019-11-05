@@ -5,15 +5,19 @@ import AddForm from "./AddForm";
 import {Droppable} from "react-beautiful-dnd";
 
 
-const Column = ({title, cards, addColumn, addCard, columnIndex}) => {
+const Column = ({title, cards, addColumn, addCard, columnId, columnIndex, deleteColumn, deleteCard}) => {
     return (
         <Droppable droppableId={String(columnIndex)}>
             {provided=>(
                 <div {...provided.droppableProps} ref={provided.innerRef}
                      className={styles.column}>
-                    <h4 className={styles.nameColumn}>{title}</h4>
+                    <div className={styles.nameColumn}>
+                        <h4 >{title}</h4>
+                        <span onClick={()=>{deleteColumn(columnId)}} className={styles.btnDeleteColumn}>X</span>
+                    </div>
+
                     {cards.map((card, index) => (
-                        <Card index={index} id={card.id} key={card.id} text={card.text}/>
+                        <Card deleteCard={deleteCard} columnId={columnId} index={index} id={card.id} key={card.id} text={card.text}/>
                     ))}
                     {provided.placeholder}
                     <AddForm columnIndex={columnIndex}

@@ -4,4 +4,9 @@
     color: black;
     padding: 3px;
     margin: 3px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.btnDelete{
+    cursor: pointer;
 }
