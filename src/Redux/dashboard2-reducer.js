@@ -58,8 +58,14 @@ export const dashboard2Reducer = (state = initialState, action) => {
             });
         case DRAG_CARD:
             const newState = [...state];
+            //dragging column
+            if (action.typeDrag === "list"){
+                const list=newState.splice(action.droppableIdStart, 1);
+                newState.splice(action.droppableIdIndexEnd, 0, ...list);
+                return newState
+            }
             // in the same list
-            if (action.droppableIdStart === action.droppableIdEnd) {
+            if (action.droppableIdStart === action.droppableIdEnd){
                 const list = state[action.droppableIdStart];
                 const card = list.cards.splice(action.droppableIdIndexStart, 1);
                 list.cards.splice(action.droppableIdIndexEnd, 0, ...card);
@@ -85,13 +91,15 @@ export const sort = (droppableIdStart,
                      droppableIdEnd,
                      droppableIdIndexStart,
                      droppableIdIndexEnd,
-                     draggableId) => ({
+                     draggableId,
+                     typeDrag) => ({
     type: DRAG_CARD,
     droppableIdStart,
     droppableIdEnd,
     droppableIdIndexStart,
     droppableIdIndexEnd,
-    draggableId
+    draggableId,
+    typeDrag
 });
 export const deleteColumn=(index)=>({type:DELETE_COLUMN, index});
 export const deleteCard=(columnId, index)=>({type:DELETE_CARD, columnId, index});

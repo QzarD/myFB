@@ -4,11 +4,11 @@ import {connect} from "react-redux";
 import Column from "./Column";
 import AddForm from "./AddForm";
 import {addCard, addColumn, deleteCard, deleteColumn, sort} from "../../../Redux/dashboard2-reducer";
-import {DragDropContext} from "react-beautiful-dnd";
+import {DragDropContext, Droppable} from "react-beautiful-dnd";
 
 const Dashboard2 = ({columns, addColumn, addCard, sort, deleteColumn, deleteCard}) => {
     const onDragEnd=(result)=>{
-        const {destination, source, draggableId} =result;
+        const {destination, source, draggableId, type} =result;
         if (!destination){
             return
         }
@@ -17,19 +17,25 @@ const Dashboard2 = ({columns, addColumn, addCard, sort, deleteColumn, deleteCard
             destination.droppableId,
             source.index,
             destination.index,
-            draggableId
+            draggableId,
+            type
         )
     }
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <div className={styles.dashboardHome}>
-                <div className={styles.dashboard}>
-                    {columns.map((column, index) => (
-                        <Column deleteCard={deleteCard} deleteColumn={deleteColumn} columnId={index} columnIndex={column.id} addColumn={addColumn} addCard={addCard} key={column.id}
-                                title={column.title} cards={column.cards}/>
-                    ))}
-                    <AddForm column addColumn={addColumn}/>
-                </div>
+                <Droppable droppableId="all-lists" direction="horizontal" type="list">
+                    {provided =>(
+                        <div className={styles.dashboard} {...provided.droppableProps} ref={provided.innerRef}>
+                            {columns.map((column, index) => (
+                                <Column deleteCard={deleteCard} deleteColumn={deleteColumn}
+                                        columnId={index} index={index} columnIndex={column.id} addColumn={addColumn} addCard={addCard} key={column.id}
+                                        title={column.title} cards={column.cards}/>
+                            ))}
+                            <AddForm column addColumn={addColumn}/>
+                        </div>
+                    )}
+                </Droppable>
             </div>
         </DragDropContext>
     )
