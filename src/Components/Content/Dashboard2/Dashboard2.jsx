@@ -29,9 +29,11 @@ const Dashboard2 = ({columns, addColumn, addCard, sort, deleteColumn, deleteCard
                         <div className={styles.dashboard} {...provided.droppableProps} ref={provided.innerRef}>
                             {columns.map((column, index) => (
                                 <Column deleteCard={deleteCard} deleteColumn={deleteColumn}
-                                        columnId={index} index={index} columnIndex={column.id} addColumn={addColumn} addCard={addCard} key={column.id}
+                                        columnId={index} index={index} columnIndex={column.id}
+                                        addColumn={addColumn} addCard={addCard} key={column.id}
                                         title={column.title} cards={column.cards}/>
                             ))}
+                            {provided.placeholder}
                             <AddForm column addColumn={addColumn}/>
                         </div>
                     )}

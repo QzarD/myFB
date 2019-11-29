@@ -7,7 +7,7 @@ import {Droppable, Draggable} from "react-beautiful-dnd";
 
 const Column = ({title, cards, addColumn, addCard, columnId, columnIndex, deleteColumn, deleteCard, index}) => {
     return (
-        <Draggable draggableId={String(columnId)} index={index}>
+        <Draggable draggableId={String(columnIndex)} index={index}>
             {provided => (
                 <div {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}
                      className={styles.column}>

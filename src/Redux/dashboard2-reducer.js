@@ -6,25 +6,7 @@ const DRAG_CARD = 'dashboard2/DRAG_CARD';
 
 let columnId = 1;
 let cardId = 4;
-
 let initialState = [
-    {
-        title: "In weak",
-        id: 0,
-        cards: [
-            {id: 0, text: "Need do it now!"},
-            {id: 1, text: "Hehe I know it"},
-        ]
-    },
-    {
-        title: "In day",
-        id: 1,
-        cards: [
-            {id: 2, text: "Good morning"},
-            {id: 3, text: "Go coffee"},
-            {id: 4, text: "Go to work"},
-        ]
-    },
 ];
 
 export const dashboard2Reducer = (state = initialState, action) => {
@@ -60,7 +42,7 @@ export const dashboard2Reducer = (state = initialState, action) => {
             const newState = [...state];
             //dragging column
             if (action.typeDrag === "list"){
-                const list=newState.splice(action.droppableIdStart, 1);
+                const list=newState.splice(action.droppableIdIndexStart, 1);
                 newState.splice(action.droppableIdIndexEnd, 0, ...list);
                 return newState
             }
