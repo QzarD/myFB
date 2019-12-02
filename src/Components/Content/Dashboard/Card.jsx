@@ -1,14 +1,23 @@
 import React from "react";
 import styles from "./Card.module.css";
-import {Draggable} from 'react-beautiful-dnd';
+import {Draggable} from "react-beautiful-dnd";
 
-
-const Card = ({card, id, index}) => {
+const Card = ({text, id, index, deleteCard, columnId}) => {
     return (
         <Draggable draggableId={String(id)} index={index}>
-            {provided=>(
-                <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className={styles.card}>
-                    {card}
+            {provided => (
+                <div ref={provided.innerRef}
+                     {...provided.draggableProps}
+                     {...provided.dragHandleProps}
+                >
+                    <div className={styles.card}>
+                        <div>
+                            {text}
+                        </div>
+                        <div onClick={()=>{deleteCard(columnId, index)}} className={styles.btnDelete}>
+                            X
+                        </div>
+                    </div>
                 </div>
             )}
         </Draggable>

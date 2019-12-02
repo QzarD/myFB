@@ -25,6 +25,7 @@ class ProfileContainer extends React.Component{
         if (this.props.match.params.userId !== prevProps.match.params.userId) {
             this.authUserId ()
         }
+        console.log(this.props);
     }
 
     render() {
@@ -50,6 +51,6 @@ export default compose(
     connect(mapStateToProps,
         {addPost, getUserId, getStatusAPI, updateStatus, saveProfileInfo, savePhoto}),
     withRouter,
-    withAuthRedirect
+    /*withAuthRedirect*/
 )(ProfileContainer);
 

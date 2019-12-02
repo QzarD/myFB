@@ -12,9 +12,7 @@
     display: flex;
 }
 .photoLarge{
-    position: relative;
 }
 .photoBtn{
-    position: absolute;
     top: 150px;
 }

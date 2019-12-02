@@ -1,71 +1,52 @@
-import React, {useState, Fragment, useRef, useEffect} from "react";
-import Button from "./Button";
-import styles from "./Dashboard.module.css"
+import React from "react";
+import styles from "./Dashboard2.module.css"
 
-
-const AddForm = ({columnIndex, addCard, addColumn, isEmptyColumn}) => {
-    const [showForm, setShowForm] = useState(false);
-    const [value, setValue] = useState("");
-    const textareaRef=useRef(null);
-
-    useEffect(()=>{
-        if (textareaRef.current){
-            textareaRef.current.focus()
-        }
-    }, [showForm]);
-
-    const onAdd = () => {
-        if (isEmptyColumn) {
-            addColumn(value);
-        } else {
-            addCard(columnIndex, value);
-        }
-        setValue("");
-        setShowForm(false);
+const AddForm = ({column, addColumn, addCard, columnIndex}) => {
+    const [form, setForm] = React.useState(false);
+    const [textForm, setTextFrom] = React.useState("");
+    const openForm = () => {
+        setForm(true)
     };
-
-    const offShowForm=()=>{
-        setValue("");
-        setShowForm(false)
-    }
-
+    const closeForm = () => {
+        setForm(false);
+        setTextFrom("")
+    };
+    const onChangeForm = (e) => {
+        setTextFrom(e.target.value)
+    };
+    const pushButton=()=>{
+        column
+            ? addColumn(textForm)
+            : addCard(columnIndex, textForm)
+    };
     return (
-        <Fragment>
-            {showForm ? (
-                <div className="add-form">
-                    <div className="add-form__input">
-                        <textarea onChange={e => setValue(e.target.value)}
-                                  value={value}
-                                  placeholder={isEmptyColumn
-                                      ? "Введите название колонки"
-                                      : "Введите название карточки"
-                                  }
-                                  ref={textareaRef}
-                                  rows={"3"}
-                        />
-                        <div className={styles.btnAddCardNow_Row}>
-                            <Button onClick={onAdd}>
-                                {isEmptyColumn ? "Добавить колонку" : "Добавить карточку"}
-                            </Button>
-                            <span onClick={offShowForm}
-                            className="add-form__bottom-clear">X</span>
-                        </div>
+        <div className={styles.buttonContainer}>
+            <div>
+                {form
+                    ? <div>
+                    <textarea
+                        placeholder={column ? "Enter text of new column" : "Enter text of new card"}
+                        autoFocus={true}
+                        onBlur={closeForm}
+                        value={textForm}
+                        onChange={onChangeForm}
+                        className={styles.form} name="textarea" id="textarea" cols="3"/>
                     </div>
-                </div>
-            ):(
-                <div className="add-form__bottom">
-                    <div onClick={setShowForm.bind(this, true)}
-                    className="add-form__bottom-add-btn">
-                        +
-                        <span>
-                            {isEmptyColumn
-                            ? "Добавить колонку"
-                            : "Добавить карточку"}
-                        </span>
+                    : <div onClick={openForm}>+ {column ? "Add column" : "Add card"}</div>
+                }
+            </div>
+            <div>
+                {form
+                    ? <div className={styles.buttonRow}>
+                        <button onMouseDown={textForm? pushButton : null} variant="contained" className={styles.button}>
+                            {column ? "Add column" : "Add card"}
+                        </button>
+                        <div> X </div>
                     </div>
-                </div>
-            )}
-        </Fragment>
+                    : null}
+
+            </div>
+        </div>
     )
 };
 export default AddForm;

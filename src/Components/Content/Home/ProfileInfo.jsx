@@ -56,7 +56,7 @@ const ProfileInfo = ({profile, status, updateStatus, saveProfileInfo, isOwner, s
             </div>
             {editMode
                 ? <ProfileDataFormReduxForm initialValues={profile} profile={profile} onSubmit={onSubmit}/>
-                : <ProfileData status={status} profile={profile} editModeOn={editModeOn}/>
+                : <ProfileData status={status} isOwner={isOwner} profile={profile} editModeOn={editModeOn}/>
             }
         </div>
     )

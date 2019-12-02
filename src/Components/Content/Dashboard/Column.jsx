@@ -1,49 +1,43 @@
-import styles from "./Dashboard.module.css"
-import {Field} from "redux-form";
 import React from "react";
-import AddForm from "./AddForm";
 import Card from "./Card";
-import {DragDropContext, Droppable} from 'react-beautiful-dnd';
+import styles from "./Dashboard2.module.css"
+import AddForm from "./AddForm";
+import {Droppable, Draggable} from "react-beautiful-dnd";
 
 
-const Column = ({columnIndex, id, title, cards, addColumn, addCard, deleteColumn, sort}) => {
-    const deleteColumnAgree = () => {
-        if (global.confirm("Delete column???")) {
-            deleteColumn(columnIndex)
-        }
-    }
+const Column = ({title, cards, addColumn, addCard, columnId, columnIndex, deleteColumn, deleteCard, index}) => {
     return (
-            <Droppable droppableId={columnIndex}>
-                {provided => (
-                    <div {...provided.droppableProps} ref={provided.innerRef} className={styles.column}>
-                        <div className="column__inner">
-                            {title && (
+        <Draggable draggableId={String(columnIndex)} index={index}>
+            {provided => (
+                <div {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}
+                     className={styles.column}>
+                    <Droppable droppableId={String(columnId)}>
+                        {provided => (
+                            <div {...provided.droppableProps} ref={provided.innerRef}>
                                 <div className={styles.nameColumn}>
-                                    <b>{title}</b>
-                                    <div onClick={deleteColumnAgree} className="column__remove">
-                                        X
-                                    </div>
+                                    <h4>{title}</h4>
+                                    <span onClick={() => {
+                                        deleteColumn(columnId)
+                                    }} className={styles.btnDeleteColumn}>X</span>
                                 </div>
-                            )}
-                            {cards && (
-                                <div className="column__items">
-                                    {cards.map((card, index) => (
-                                        <Card key={index} card={card} id={index} index={index}/>
-                                    ))}
-                                </div>
-                            )}
-                            <AddForm columnIndex={columnIndex}
-                                     isEmptyColumn={!cards}
-                                     addColumn={addColumn}
-                                     addCard={addCard}
-                            />
-                        </div>
-                        {provided.placeholder}
-                    </div>
-                )}
-            </Droppable>
+
+                                {cards.map((card, index) => (
+                                    <Card deleteCard={deleteCard} columnId={columnId} index={index} id={card.id}
+                                          key={card.id} text={card.text}/>
+                                ))}
+                                {provided.placeholder}
+                                <AddForm columnIndex={columnIndex}
+                                         addColumn={addColumn}
+                                         addCard={addCard}
+                                />
+                            </div>
+                        )}
+                    </Droppable>
+                </div>
+            )}
+        </Draggable>
 
     )
-};
+}
 
 export default Column;

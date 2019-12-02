@@ -1,12 +1,14 @@
 import styles from "./Profile.module.css";
 import React from "react";
 
-export const ProfileData = ({profile, editModeOn}) => {
+export const ProfileData = ({profile, editModeOn, isOwner}) => {
     return (
         <div>
+            {isOwner &&
             <div>
                 <button onClick={editModeOn}>Change</button>
-            </div>
+            </div>}
+
             <div>
                 <b>Full Name:</b> {profile.fullName || "None"}
             </div>
