@@ -7,8 +7,8 @@ export const ProfileData = ({profile, editModeOn, isOwner}) => {
             {isOwner &&
             <div>
                 <button onClick={editModeOn}>Change</button>
-            </div>}
-
+            </div>
+            }
             <div>
                 <b>Full Name:</b> {profile.fullName || "None"}
             </div>

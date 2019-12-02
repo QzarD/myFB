@@ -10,9 +10,14 @@ import {getUserIdFromState} from "../../../Redux/auth-selectors";
 
 class ProfileContainer extends React.Component{
     authUserId (){
-        let userId=this.props.userId;
+        let userId=this.props.match.params.userId;
         if (!userId){
-            this.props.history.push("/login")
+            userId=this.props.userId;
+            if (!userId){
+                userId=1774;
+                /*this.props.history.push("/login")*/
+            }
+
         }
         this.props.getUserId(userId);
         this.props.getStatusAPI(userId);
@@ -25,7 +30,7 @@ class ProfileContainer extends React.Component{
         if (this.props.match.params.userId !== prevProps.match.params.userId) {
             this.authUserId ()
         }
-        console.log(this.props);
+
     }
 
     render() {

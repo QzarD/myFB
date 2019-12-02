@@ -7,7 +7,7 @@ import {ProfileDataFormReduxForm} from "../../Common/Forms/ProfileDataFormReduxF
 import {ProfileData} from "./ProfileData";
 
 const ProfileInfo = ({profile, status, updateStatus, saveProfileInfo, isOwner, savePhoto}) => {
-    let [editMode, setEditMode] = useState(false);
+    const [editMode, setEditMode] = useState(false);
     if (!profile) {
         return <Preloader/>
     }
