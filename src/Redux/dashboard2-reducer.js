@@ -4,8 +4,8 @@ const ADD_CARD = 'dashboard2/ADD_CARD';
 const DELETE_CARD = 'dashboard2/DELETE_CARD';
 const DRAG_CARD = 'dashboard2/DRAG_CARD';
 
-let columnId = 1;
-let cardId = 4;
+let columnId = 0;
+let cardId = 0;
 let initialState = [
 ];
 
@@ -23,7 +23,7 @@ export const dashboard2Reducer = (state = initialState, action) => {
                 if (column.id === action.columnIndex) {
                     return {
                         ...column,
-                        cards: [...column.cards, {id: cardId, text: action.text}]
+                        cards: [...column.cards, {id: `cardId-${cardId}`, text: action.text}]
                     }
                 }
                 return column

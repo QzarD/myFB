@@ -4,8 +4,8 @@ const ADD_COLUMN = 'dashboard/add_column';
 const DELETE_COLUMN = 'dashboard/delete_column';
 const DRAG_HAPPENED = 'dashboard/DRAG_HAPPENED';
 
-let columnId = 1;
-let cardId = 3;
+let columnId = 0;
+let cardId = 0;
 
 let initialState = {
     items: [
