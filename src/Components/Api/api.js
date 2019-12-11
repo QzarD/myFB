@@ -1,14 +1,9 @@
 import * as axios from "axios";
 
-/*
+
 const instanse=axios.create({
     withCredentials:true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {"API-KEY":"3b86e8aa-ba2b-4ce9-8488-61b438f5e9c3"}
-})*/
-const instanse=axios.create({
-    withCredentials:true,
-    baseURL: '',
     headers: {"API-KEY":"3b86e8aa-ba2b-4ce9-8488-61b438f5e9c3"}
 })
 
