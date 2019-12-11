@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/myFB/static/css/main.f21bdfe5.chunk.css",
+    "main.js": "/myFB/static/js/main.dc4e2fd0.chunk.js",
+    "main.js.map": "/myFB/static/js/main.dc4e2fd0.chunk.js.map",
+    "runtime~main.js": "/myFB/static/js/runtime~main.222e7028.js",
+    "runtime~main.js.map": "/myFB/static/js/runtime~main.222e7028.js.map",
+    "static/js/2.44e4262b.chunk.js": "/myFB/static/js/2.44e4262b.chunk.js",
+    "static/js/2.44e4262b.chunk.js.map": "/myFB/static/js/2.44e4262b.chunk.js.map",
+    "static/js/3.e95bc4b6.chunk.js": "/myFB/static/js/3.e95bc4b6.chunk.js",
+    "static/js/3.e95bc4b6.chunk.js.map": "/myFB/static/js/3.e95bc4b6.chunk.js.map",
+    "static/css/4.4f22d4d6.chunk.css": "/myFB/static/css/4.4f22d4d6.chunk.css",
+    "static/js/4.65278d63.chunk.js": "/myFB/static/js/4.65278d63.chunk.js",
+    "static/js/4.65278d63.chunk.js.map": "/myFB/static/js/4.65278d63.chunk.js.map",
+    "static/css/5.3eee3b1e.chunk.css": "/myFB/static/css/5.3eee3b1e.chunk.css",
+    "static/js/5.b6b2e2f6.chunk.js": "/myFB/static/js/5.b6b2e2f6.chunk.js",
+    "static/js/5.b6b2e2f6.chunk.js.map": "/myFB/static/js/5.b6b2e2f6.chunk.js.map",
+    "static/css/6.177d030e.chunk.css": "/myFB/static/css/6.177d030e.chunk.css",
+    "static/js/6.a9a21398.chunk.js": "/myFB/static/js/6.a9a21398.chunk.js",
+    "static/js/6.a9a21398.chunk.js.map": "/myFB/static/js/6.a9a21398.chunk.js.map",
+    "static/css/7.9fd90bbd.chunk.css": "/myFB/static/css/7.9fd90bbd.chunk.css",
+    "static/js/7.71886455.chunk.js": "/myFB/static/js/7.71886455.chunk.js",
+    "static/js/7.71886455.chunk.js.map": "/myFB/static/js/7.71886455.chunk.js.map",
+    "index.html": "/myFB/index.html",
+    "precache-manifest.8737067e9efbc649256b23ea3f982324.js": "/myFB/precache-manifest.8737067e9efbc649256b23ea3f982324.js",
+    "service-worker.js": "/myFB/service-worker.js",
+    "static/css/4.4f22d4d6.chunk.css.map": "/myFB/static/css/4.4f22d4d6.chunk.css.map",
+    "static/css/5.3eee3b1e.chunk.css.map": "/myFB/static/css/5.3eee3b1e.chunk.css.map",
+    "static/css/6.177d030e.chunk.css.map": "/myFB/static/css/6.177d030e.chunk.css.map",
+    "static/css/7.9fd90bbd.chunk.css.map": "/myFB/static/css/7.9fd90bbd.chunk.css.map",
+    "static/css/main.f21bdfe5.chunk.css.map": "/myFB/static/css/main.f21bdfe5.chunk.css.map"
+  }
+}
